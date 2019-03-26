@@ -28,25 +28,34 @@ Sn = (a1 * (2 - Math.pow(2, -n)));
 ## 缺点
 js能取值范围如下，由于采用了放大倍数的方法，因此会对整体的取值范围有影响（最大安全值）。
 ```
-±Math.pow(2, 53) = ±9007199254740991
+±Math.pow(2, 53) = ±9007199254740991 // Number.MAX_SAFE_INTEGER和Number.MIN_SAFE_INTEGER
 ```
 
 ## 引入方式
-calc.js支持script标签引入,挂载在全局的window.Calc变量下。
+1. `better-calc`支持script标签引入,挂载在全局的window.Calc变量下。
 ```js
 <script type="text/javascript" src="./index.js"></script>
 ```
+2. **npm 安装**
+```js
+npm install better-calc -g
+```
 
-也支持通过es6的import语法
+[![](https://img.shields.io/npm/v/better-calc.svg?style=flat)](https://npmjs.com/package/better-calc)
+[![](https://img.shields.io/npm/dm/better-calc.svg?style=flat)](https://npmjs.com/package/better-calc)
+[![](https://img.shields.io/bundlephobia/minzip/better-calc.svg?style=flat)](https://bundlephobia.com/result?p=better-calc)
+
+通过es6的import语法
 ```js
 import Calc from 'better-calc';
 ```
 
-也可以通过commonjs规范引入
+通过commonjs规范引入
 ```js
 const Calc =  require('better-calc');
 ```
 
+## 使用方法
 Calc提供了四个方法，分别对应加减乘除方法。
 ```js
 Calc.add(a, b);
