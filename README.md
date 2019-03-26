@@ -38,7 +38,7 @@ js能取值范围如下，由于采用了放大倍数的方法，因此会对整
 ```
 2. **npm 安装**
 ```js
-npm install better-calc -g
+npm install better-calc -S
 ```
 
 [![](https://img.shields.io/npm/v/better-calc.svg?style=flat)](https://npmjs.com/package/better-calc)
