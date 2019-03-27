@@ -8,7 +8,7 @@
   "use strict";
   /*
    * 将浮点数转换成字符串，通过字符串replace方法去掉小数点，放大倍数, 不能直接通过乘以某个数放大。
-   * 这个方案有缺点就是本来js中最大值是2的53次方，由于要放大倍数。而且
+   * 这个方案有缺点就是本来js中最大值是2的53次方，由于要放大倍数，会受到最大安全值的限制。
    */
   function isUndef(v) {
     return v === undefined || v === null;
@@ -28,16 +28,16 @@
       //加法中，加数和被加数要同时放大10的n次方倍，最后结果除以10的n次方倍，n为最多位数。
       let maxPoint = Math.max(p1, p2);
       let subPoint = p1 - p2;
-      a = parseInt(a.toString().replace(/\./, ""));
-      b = parseInt(b.toString().replace(/\./, ""));
+      let c = parseInt(a.toString().replace(/\./, ""));
+      let d = parseInt(b.toString().replace(/\./, ""));
       if (subPoint > 0) {
         //第一个数的小数点位多，后一位数要补0
-        b = b * Math.pow(10, subPoint);
+        d = d * Math.pow(10, subPoint);
       } else if (subPoint < 0) {
         //第二个数的小数点位多，第一个数要补0
-        a = a * Math.pow(10, -subPoint);
+        c = c * Math.pow(10, -subPoint);
       }
-      return (a + b) / Math.pow(10, maxPoint);
+      return (c + d) / Math.pow(10, maxPoint);
     },
 
     sub(a, b) {
@@ -57,9 +57,9 @@
       let p2 = (bArr[1] && bArr[1].replace(/0*$/, "").length) || 0;
       //乘法中，乘数放大10的n次方倍，被乘数放大10的n次方倍，最后结果要除以10的(m+n)次方倍
       let addPoint = p1 + p2;
-      a = parseInt(a.toString().replace(/\./, ""));
-      b = parseInt(b.toString().replace(/\./, ""));
-      return (a * b) / Math.pow(10, addPoint);
+      let c = parseInt(a.toString().replace(/\./, ""));
+      let d = parseInt(b.toString().replace(/\./, ""));
+      return (c * d) / Math.pow(10, addPoint);
     },
 
     div(a, b) {
@@ -76,9 +76,9 @@
 
       //除法中，除数放大10的m次方倍，被除数放大10的n次方倍，最后结果要除以10的(m-n)次方倍
       let subPoint = p1 - p2;
-      a = parseInt(a.toString().replace(/\./, ""));
-      b = parseInt(b.toString().replace(/\./, ""));
-      return a / b / Math.pow(10, subPoint);
+      let c = parseInt(a.toString().replace(/\./, ""));
+      let d = parseInt(b.toString().replace(/\./, ""));
+      return c / d / Math.pow(10, subPoint);
     }
   };
 
