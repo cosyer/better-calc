@@ -25,16 +25,16 @@
       let bArr = b.toString().split(".");
       let p1 = (aArr[1] && aArr[1].replace(/0*$/, "").length) || 0;
       let p2 = (bArr[1] && bArr[1].replace(/0*$/, "").length) || 0;
-      //加法中，加数和被加数要同时放大10的n次方倍，最后结果除以10的n次方倍，n为最多位数。
+      // 加法中，加数和被加数要同时放大10的n次方倍，最后结果除以10的n次方倍，n为最多位数。
       let maxPoint = Math.max(p1, p2);
       let subPoint = p1 - p2;
       let c = parseInt(a.toString().replace(/\./, ""));
       let d = parseInt(b.toString().replace(/\./, ""));
       if (subPoint > 0) {
-        //第一个数的小数点位多，后一位数要补0
+        // 第一个数的小数点位多，后一位数要补0
         d = d * Math.pow(10, subPoint);
       } else if (subPoint < 0) {
-        //第二个数的小数点位多，第一个数要补0
+        // 第二个数的小数点位多，第一个数要补0
         c = c * Math.pow(10, -subPoint);
       }
       return (c + d) / Math.pow(10, maxPoint);
@@ -55,7 +55,7 @@
       // 存储每个数小数点后的位数
       let p1 = (aArr[1] && aArr[1].replace(/0*$/, "").length) || 0;
       let p2 = (bArr[1] && bArr[1].replace(/0*$/, "").length) || 0;
-      //乘法中，乘数放大10的n次方倍，被乘数放大10的n次方倍，最后结果要除以10的(m+n)次方倍
+      // 乘法中，乘数放大10的n次方倍，被乘数放大10的n次方倍，最后结果要除以10的(m+n)次方倍
       let addPoint = p1 + p2;
       let c = parseInt(a.toString().replace(/\./, ""));
       let d = parseInt(b.toString().replace(/\./, ""));
@@ -74,7 +74,7 @@
       let p1 = (aArr[1] && aArr[1].replace(/0*$/, "").length) || 0;
       let p2 = (bArr[1] && bArr[1].replace(/0*$/, "").length) || 0;
 
-      //除法中，除数放大10的m次方倍，被除数放大10的n次方倍，最后结果要除以10的(m-n)次方倍
+      // 除法中，除数放大10的m次方倍，被除数放大10的n次方倍，最后结果要除以10的(m-n)次方倍
       let subPoint = p1 - p2;
       let c = parseInt(a.toString().replace(/\./, ""));
       let d = parseInt(b.toString().replace(/\./, ""));

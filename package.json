@@ -1,6 +1,6 @@
 {
   "name": "better-calc",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "处理js浮点数运算损失精度问题",
   "main": "./dist/index.js",
   "scripts": {
